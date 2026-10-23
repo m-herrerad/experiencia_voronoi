@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registro de participantes</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════
+       PANTALLA 1 — Tratamiento de datos
+  ══════════════════════════════════ -->
+  <section id="screen-consent" class="screen active">
+    <div class="card">
+      <h1>Autorización de tratamiento de datos personales, imagen y voz</h1>
+      <div class="legal-box">
+
+        <p class="legal-intro">De conformidad con la Constitución Política de Colombia (Artículo 15), la Ley Estatutaria 1581 de 2012, su Decreto Reglamentario 1377 de 2013, la Ley 1266 de 2008 y demás normas concordantes vigentes, le informamos sobre el tratamiento que daremos a sus datos personales, imagen y voz en el marco del presente evento.</p>
+
+        <h3>1. Responsable del tratamiento</h3>
+        <p><strong>[Nombre del organizador o entidad responsable]</strong>, con domicilio en [ciudad, Colombia], en calidad de Responsable del Tratamiento de datos personales, actúa en pleno cumplimiento de la normativa colombiana de protección de datos. Para contactar al responsable puede escribir a <strong>[correo de contacto]</strong>.</p>
+
+        <h3>2. Datos personales recopilados</h3>
+        <p>En el marco del presente evento se recopilarán los siguientes datos personales:</p>
+        <ul>
+          <li><strong>Datos de identificación y contacto:</strong> nombre completo, número de teléfono y dirección de correo electrónico.</li>
+          <li><strong>Datos biométricos e imagen:</strong> grabación de video e imagen facial capturada mediante la cámara frontal del dispositivo utilizado en el proceso de registro.</li>
+          <li><strong>Datos de voz:</strong> grabación de audio asociada al video de registro.</li>
+        </ul>
+
+        <h3>3. Finalidad del tratamiento</h3>
+        <p>Sus datos personales, imagen y voz serán tratados exclusivamente para las siguientes finalidades:</p>
+        <ul>
+          <li>Registro, identificación y control de asistencia al evento.</li>
+          <li>Proyección, visualización y difusión de contenidos audiovisuales en las pantallas, instalaciones y espacios habilitados durante el desarrollo del evento, con fines creativos, artísticos y comunicativos propios de la actividad.</li>
+          <li>Uso de la imagen y la voz en dinámicas, actividades y experiencias diseñadas como parte del evento.</li>
+          <li>Documentación interna del evento por parte de los organizadores.</li>
+          <li>Gestión y administración de la base de datos de participantes.</li>
+        </ul>
+
+        <h3>4. Uso exclusivo dentro del evento</h3>
+        <p>Su imagen, voz y datos personales serán utilizados <strong>EXCLUSIVAMENTE</strong> en el marco del presente evento. Las grabaciones audiovisuales, imágenes y datos recopilados <strong>NO serán</strong> compartidos con terceros ajenos al evento, publicados en redes sociales, medios de comunicación masiva ni en ninguna plataforma pública, sin que medie un consentimiento adicional, específico y expreso por parte del titular. El material recopilado se empleará única y exclusivamente para las actividades y experiencias programadas dentro del evento, y su uso cesará al finalizar este.</p>
+
+        <h3>5. Activación de cámara y grabación de video</h3>
+        <p>Al aceptar las presentes condiciones, usted autoriza de manera <strong>expresa, libre e informada</strong>:</p>
+        <ul>
+          <li>La activación automática de la cámara frontal del dispositivo inmediatamente después de aceptar este tratamiento de datos.</li>
+          <li>La grabación de un video de corta duración (máximo 2 minutos) que tendrá lugar de forma automática mientras usted diligencia el formulario de registro en el siguiente paso.</li>
+          <li>Que dicho video, junto con sus datos de contacto, sea recibido, almacenado y procesado por los organizadores del evento conforme a las finalidades descritas en el numeral 3.</li>
+        </ul>
+        <p>Esta autorización es informada y consentida: el presente documento le notifica con antelación que la grabación ocurrirá durante el diligenciamiento del formulario.</p>
+
+        <h3>6. Base legal del tratamiento</h3>
+        <p>El tratamiento de sus datos personales, imagen y voz se fundamenta en su <strong>consentimiento libre, previo, expreso e informado</strong>, conforme a lo establecido en el Artículo 6 de la Ley 1581 de 2012. El derecho a la imagen está protegido en Colombia por el Artículo 15 de la Constitución Política y la Ley 23 de 1982 sobre Derechos de Autor. Su uso requiere autorización del titular, la cual usted otorga mediante la aceptación del presente documento. Ningún dato será tratado sin dicha autorización.</p>
+
+        <h3>7. Derechos del titular</h3>
+        <p>Como titular de los datos personales, usted tiene pleno derecho a:</p>
+        <ul>
+          <li><strong>Conocer</strong> los datos personales que han sido objeto de recopilación y tratamiento.</li>
+          <li><strong>Actualizar</strong> sus datos cuando sean inexactos, incompletos o desactualizados.</li>
+          <li><strong>Rectificar</strong> cualquier información incorrecta o parcial.</li>
+          <li><strong>Suprimir</strong> sus datos del tratamiento cuando no se respeten los principios de la ley o cuando ya no sean necesarios para la finalidad que los originó.</li>
+          <li><strong>Revocar</strong> en cualquier momento la autorización otorgada para el tratamiento de sus datos.</li>
+          <li><strong>Acceder</strong> de forma gratuita a sus datos que hayan sido objeto de tratamiento.</li>
+          <li><strong>Presentar quejas</strong> ante la Superintendencia de Industria y Comercio (SIC).</li>
+        </ul>
+        <p>Para ejercer cualquiera de estos derechos puede escribir a <strong>[correo de contacto del organizador]</strong>.</p>
+
+        <h3>8. Principios que rigen el tratamiento</h3>
+        <p>El tratamiento observará los principios del Artículo 4 de la Ley 1581 de 2012: legalidad, finalidad, libertad, veracidad, transparencia, seguridad y confidencialidad. Los datos no serán usados para fines distintos a los aquí descritos, ni cedidos a terceros sin autorización expresa del titular.</p>
+
+        <h3>9. Seguridad de los datos</h3>
+        <p>El Responsable adoptará las medidas técnicas, humanas y administrativas necesarias para garantizar la seguridad y confidencialidad de sus datos, imagen y voz, en cumplimiento del principio de seguridad del Artículo 4, literal g) de la Ley 1581 de 2012 y el Artículo 26 del Decreto 1377 de 2013, evitando su adulteración, pérdida, consulta o acceso no autorizado.</p>
+
+        <h3>10. Vigencia del tratamiento</h3>
+        <p>Los datos permanecerán en la base de datos del Responsable durante el tiempo necesario para cumplir las finalidades descritas y conforme a la ley aplicable, o hasta que el titular ejerza su derecho de supresión, siempre que no exista obligación legal de conservarlos.</p>
+
+        <h3>11. Marco legal aplicable</h3>
+        <ul>
+          <li>Constitución Política de Colombia, Artículo 15 — Derecho a la intimidad e imagen.</li>
+          <li>Ley Estatutaria 1581 de 2012 — Protección de Datos Personales.</li>
+          <li>Decreto Reglamentario 1377 de 2013.</li>
+          <li>Ley 1266 de 2008 — Disposiciones generales del Hábeas Data.</li>
+          <li>Ley 23 de 1982 — Derechos de Autor (protección de la imagen personal).</li>
+          <li>Circulares y resoluciones de la Superintendencia de Industria y Comercio (SIC).</li>
+        </ul>
+
+      </div>
+
+      <label class="checkbox-row">
+        <input type="checkbox" id="chk-accept" />
+        <span>He leído y comprendido íntegramente el presente aviso de tratamiento de datos personales. Soy mayor de edad y otorgo mi consentimiento libre, previo, expreso e informado para el tratamiento de mis datos, imagen y voz según las finalidades descritas, incluyendo la activación automática de la cámara y la grabación del video durante el diligenciamiento del formulario.</span>
+      </label>
+      <button id="btn-accept" disabled>Aceptar y continuar</button>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       PANTALLA 2 — Formulario
+       (la cámara graba en segundo plano)
+  ══════════════════════════════════ -->
+  <section id="screen-form" class="screen">
+    <div class="card">
+      <h1>Completa tu registro</h1>
+      <p>Ingresa tus datos de contacto para acceder al evento.</p>
+      <div class="form-fields">
+        <div class="field-group">
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" placeholder="Tu nombre" />
+        </div>
+        <div class="field-group">
+          <label for="apellido">Apellido</label>
+          <input type="text" id="apellido" placeholder="Tu apellido" />
+        </div>
+        <div class="field-group">
+          <label for="telefono">Teléfono</label>
+          <input type="tel" id="telefono" placeholder="Tu número de teléfono" />
+        </div>
+        <div class="field-group">
+          <label for="correo">Correo electrónico</label>
+          <input type="email" id="correo" placeholder="tu@correo.com" />
+        </div>
+      </div>
+      <p id="form-error" class="error hidden">Por favor completa todos los campos correctamente.</p>
+      <p id="submit-status" class="status"></p>
+      <button id="btn-submit">Enviar y acceder al evento</button>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       PANTALLA 3 — Información del evento
+  ══════════════════════════════════ -->
+  <section id="screen-evento" class="screen">
+    <img src="voronoi.png" alt="Voronoi — información del evento" class="evento-img" />
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
