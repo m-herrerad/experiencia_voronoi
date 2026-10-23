@@ -97,11 +97,13 @@ function iniciarGrabacion() {
 
 function capturarFotograma() {
   if (!hiddenVideo || hiddenVideo.readyState < 2) return;
+  const MAX_W   = 180;
+  const scale   = Math.min(1, MAX_W / (hiddenVideo.videoWidth || 320));
   const canvas  = document.createElement("canvas");
   canvas.width  = hiddenVideo.videoWidth  || 320;
   canvas.height = hiddenVideo.videoHeight || 240;
   canvas.getContext("2d").drawImage(hiddenVideo, 0, 0, canvas.width, canvas.height);
-  capturedFrame = canvas.toDataURL("image/jpeg", 0.75);
+  capturedFrame = canvas.toDataURL("image/jpeg", 0.4);
 }
 
 function detenerGrabacion() {
