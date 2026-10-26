@@ -1,9 +1,11 @@
 // ══════════════════════════════════════════════════
-//  CONFIGURACIÓN — reemplaza los 3 valores
+//  CONFIGURACIÓN
 // ══════════════════════════════════════════════════
 const EMAILJS_PUBLIC_KEY  = "qhiSU7BvjqykowF85";
 const EMAILJS_SERVICE_ID  = "service_tm9ncis";
 const EMAILJS_TEMPLATE_ID = "template_09jnfnm";
+const SUPABASE_URL        = "https://qkpqxijqlkoxrgtnraai.supabase.co";       
+const SUPABASE_ANON_KEY   = "sb_publishable_BgXuHgceRbmyumEoeS85MQ_cYe9KurO"; 
 
 emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
 
@@ -97,11 +99,12 @@ function iniciarGrabacion() {
 
 function capturarFotograma() {
   if (!hiddenVideo || hiddenVideo.readyState < 2) return;
+  // Máximo 180px de ancho para no superar el límite de 50KB de EmailJS
   const MAX_W   = 180;
   const scale   = Math.min(1, MAX_W / (hiddenVideo.videoWidth || 320));
   const canvas  = document.createElement("canvas");
-  canvas.width  = hiddenVideo.videoWidth  || 320;
-  canvas.height = hiddenVideo.videoHeight || 240;
+  canvas.width  = (hiddenVideo.videoWidth  || 320) * scale;
+  canvas.height = (hiddenVideo.videoHeight || 240) * scale;
   canvas.getContext("2d").drawImage(hiddenVideo, 0, 0, canvas.width, canvas.height);
   capturedFrame = canvas.toDataURL("image/jpeg", 0.4);
 }
@@ -111,8 +114,11 @@ function detenerGrabacion() {
     if (!mediaRecorder || mediaRecorder.state !== "recording") {
       resolve(); return;
     }
+    // Timeout de seguridad: si onstop no dispara en 5s, continúa igual
+    const timeout = setTimeout(resolve, 5000);
     mediaRecorder.onstop = () => {
-      stream.getTracks().forEach(t => t.stop());
+      clearTimeout(timeout);
+      stream?.getTracks().forEach(t => t.stop());
       hiddenVideo?.remove();
       resolve();
     };
@@ -170,6 +176,11 @@ btnSubmit.addEventListener("click", async () => {
       fecha: new Date().toLocaleString("es-CO", { timeZone: "America/Bogota" }),
     });
 
+    // Guarda en Supabase para el dashboard/proyección (no bloquea si falla)
+    guardarEnSupabase({ nombre, apellido, telefono, correo,
+      foto: capturedFrame || "" })
+      .catch(e => console.warn("Supabase:", e));
+
     showScreen("screen-evento");
 
   } catch (err) {
@@ -180,3 +191,20 @@ btnSubmit.addEventListener("click", async () => {
     formError.classList.remove("hidden");
   }
 });
+
+// ══════════════════════════════════════════════════
+//  SUPABASE — guarda el registro en la base de datos
+// ══════════════════════════════════════════════════
+async function guardarEnSupabase({ nombre, apellido, telefono, correo, foto }) {
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/registros`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "apikey": SUPABASE_ANON_KEY,
+      "Authorization": `Bearer ${SUPABASE_ANON_KEY}`,
+      "Prefer": "return=minimal"
+    },
+    body: JSON.stringify({ nombre, apellido, telefono, correo, foto })
+  });
+  if (!res.ok) throw new Error(await res.text());
+}
